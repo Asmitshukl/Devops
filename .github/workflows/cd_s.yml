@@ -15,4 +15,4 @@ jobs:
           touch /home/runner/.ssh/known_hosts
           echo "${{ secrets.KNOWN_HOSTS }}" &> /home/runner/.ssh/known_hosts
           chmod 700 /home/runner/ssh_key
-          ssh -i ~/ssh_key ubuntu@13.60.6.146 -t "cd Devops && git pull origin main && export PATH=/root/.nvm/versions/node/v22.13.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin && npm install -g pnpm && pnpm install && pnpm run build && pm2 restart fe-ser && pm2 restart http-stage && pm2 restart ws-backend"
+          ssh -i ~/ssh_key ubuntu@13.60.6.146 -t "source /home/ubuntu/.nvm/nvm.sh && cd Devops && git pull origin main && npm install -g pnpm && pnpm install && pnpm run build && pm2 restart fe-ser && pm2 restart http-stage && pm2 restart ws-backend"
